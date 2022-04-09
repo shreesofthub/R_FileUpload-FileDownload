@@ -6,6 +6,9 @@ sap.ui.define([
     return Controller.extend("r6fileuploader.controller.View1", {
         handleUploadComplete: function () {
             sap.m.MessageToast.show("File Uploaded");
+            var oFilerefresh = this.getView().byId("itemlist");
+            oFilerefresh.getModel().refresh(true);
+            sap.m.MessageToast.show("File refreshed");
         },
         onUpload: function () {
             var oModel = this.getOwnerComponent().getModel();
@@ -32,17 +35,8 @@ sap.ui.define([
             name = ctx.getObject().Filename;
             prd = ctx.getObject().Prdid; 
             var oModel = this.getOwnerComponent().getModel();
-            // oModel.getData("/Data");
-            link = "/attachmentsSet(Prdid='" + prd + "',Filename='" + name + "')/$value";
-            oModel.read(link, {
-                success: function(response) {
-                    var file = response.requestUri;
-                    window.open(file);
-                },
-                error: function() {
-
-                }
-            });
+            link = "/sap/opu/odata/sap/ZSHREE_PRODUCTS_SRV/attachmentsSet(Prdid='" + prd + "',Filename='" + name + "')/$value";
+            sap.m.URLHelper.redirect(link,false);
         }
 
     });

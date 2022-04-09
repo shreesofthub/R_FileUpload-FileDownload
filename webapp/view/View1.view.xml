@@ -16,7 +16,8 @@
                     <List id="itemlist" headerText="Files" class="sapUiResponsiveMargin" width="auto" 
                           items="{/attachmentsSet}">
                         <items>
-                            <ObjectListItem id="listItem" title="{Filename}" >
+                            <ObjectListItem id="listItem" title="{Filename}" 
+                            icon="/sap/opu/odata/sap/ZSHREE_PRODUCTS_SRV/attachmentsSet(Prdid='{Prdid}',Filename='{Filename}')/$value">
                                 <ObjectAttribute id="idObjAtt" text="Download" active="true" press="download"/>
                             </ObjectListItem>
                         </items>
