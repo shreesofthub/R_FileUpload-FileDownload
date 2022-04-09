@@ -1,0 +1,28 @@
+<mvc:View
+    controllerName="r6fileuploader.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uni="sap.ui.unified"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <uni:FileUploader id="fileUploader" useMultipart="false" name="myFileUpload" 
+                    uploadUrl="/sap/opu/odata/sap/ZSHREE_PRODUCTS_SRV/attachmentsSet" width="400px" 
+                    tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+                    <Button id="idUploadBtn" press="onUpload" icon="sap-icon://upload" text="upload"/>                    
+                    <List id="itemlist" headerText="Files" class="sapUiResponsiveMargin" width="auto" 
+                          items="{/attachmentsSet}">
+                        <items>
+                            <ObjectListItem id="listItem" title="{Filename}" >
+                                <ObjectAttribute id="idObjAtt" text="Download" active="true" press="download"/>
+                            </ObjectListItem>
+                        </items>
+                    </List>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
